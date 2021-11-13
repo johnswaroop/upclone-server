@@ -8,14 +8,15 @@ app.use(json());
 
 app.use('/signup',require('./routes/signup'));
 app.use('/signin',require('./routes/signin'));
+app.use('/jobpost',require('./routes/jobpost'));
+app.use('/postUserType',require('./routes/postUserType'));
+app.use('/postDevProfile',require('./routes/devProfile'));
 
-app.get('/test',(req,res)=>{
+app.get('/',(req,res)=>{
     res.json({status:"Working"});
 })
 
 // Routes
-
-
 app.listen(port,()=>{
     console.log("-- SERVER RUNNING --")
 })

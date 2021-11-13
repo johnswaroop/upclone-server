@@ -8,12 +8,13 @@ const signin = async (req, res) => {
     let dbres = await user.findOne({ "email": email, "password": password });
 
     if (dbres) {
-        jwt.sign(dbres.email, "upworkclone", (err, token) => {
+        let token = JSON.stringify({ _id: dbres.id, _userType: dbres.userType })
+        jwt.sign(token, "upworkclone", (err, token) => {
             if (err) {
                 res.json({ status: "error", error: err });
             }
             else {
-                res.json({ status: "success", token: token });
+                res.json({ status: "success", token: token, userType: dbres.userType });
             }
         });
     }
