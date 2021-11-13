@@ -5,7 +5,7 @@ const app = express();
 const port = 5000;
 
 app.use(json());
-
+app.use(express.static('public'));
 app.use('/signup',require('./routes/signup'));
 app.use('/signin',require('./routes/signin'));
 app.use('/jobpost',require('./routes/jobpost'));
