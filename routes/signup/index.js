@@ -22,7 +22,7 @@ let createUser = async (req, res, next) => {
             });
         }
         else {
-            token = JSON.stringify({ _id: result.id, userType })
+            let token = JSON.stringify({ _id: result.id, userType })
             jwt.sign(token, "upworkclone", (err, token) => {
                 if (err) {
                     res.json({ status: "error", error: err });

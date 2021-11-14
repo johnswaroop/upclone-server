@@ -8,7 +8,7 @@ const auth = (req, res, next) => {
         let token = jwt.verify(bearerToken, jwtSecret);
         console.log(token);
         req._id = token._id;
-        req.userType = token._userType;
+        req._userType = token._userType;
     }
     catch (e) {
         res.send({ status: "error", error: "invalid auth" });
@@ -18,5 +18,6 @@ const auth = (req, res, next) => {
 }
 
 // returns _id (user object id)
+// _userType (userType)
 
 module.exports = auth;
